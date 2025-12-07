@@ -11,7 +11,7 @@ const messageRoutes = require("./routes/message.route.js");
 const {app, server} = require("./lib/socket.js");
 
 const port = process.env.PORT || 5000;
-const _dirname = path.resolve();
+const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
@@ -25,12 +25,12 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-if(process.env.NODE_ENV==="production"){
-    app.use(express.static(path.join(_dirname,"../frontend/dist"))); 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-    })
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+  });
 }
 
 server.listen(port, () => {

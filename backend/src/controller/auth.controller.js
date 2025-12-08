@@ -1,9 +1,9 @@
-const User = require("../models/user.model.js");
-const bcrypt = require("bcryptjs");
-const generateToken = require("../lib/utils.js");
-const cloudinary = require("../lib/cloudinary.js");
+import { generateToken } from "../lib/utils.js";
+import User from "../models/user.model.js";
+import bcrypt from "bcryptjs";
+import cloudinary from "../lib/cloudinary.js";
 
-const signup = async (req, res) => {
+export const signup = async (req, res) => {
     const { userName, email, password } = req.body;
     try {
 
@@ -48,7 +48,7 @@ const signup = async (req, res) => {
     }
 };
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
     const { email, password } = req.body
     try {
         const user = await User.findOne({ email })
@@ -78,7 +78,7 @@ const login = async (req, res) => {
     }
 };
 
-const logout = (req, res) => {
+export const logout = (req, res) => {
     try{
         res.cookie("jwt", "", {maxAge:0})
         res.status(200).json({message:"Logged out successfully"});
@@ -90,7 +90,7 @@ const logout = (req, res) => {
     }
 };
 
-const updateProfile = async (req, res) => {
+export const updateProfile = async (req, res) => {
     try {
         const {profilePic} = req.body;
         const userId = req.user._id;
@@ -114,7 +114,7 @@ const updateProfile = async (req, res) => {
     }
 };
 
-const checkAuth = (req, res) => {
+export const checkAuth = (req, res) => {
     try {
         res.status(200).json(req.user);
     } catch (error) {
@@ -122,11 +122,3 @@ const checkAuth = (req, res) => {
         res.status(500).json({message:"Internal Server Error" });
     }
 }
-
-module.exports = {
-    signup,
-    login,
-    logout,
-    updateProfile,
-    checkAuth,
-};

@@ -61,21 +61,46 @@ A modern, real-time chat application built with the **MERN stack** (MongoDB, Exp
 - express-async-handler
 - cloudinary (for file uploads)
 
-## 🚀 Quick Start
+##🚀 Quick Start
+Prerequisites
+Node.js (v16+)
+MongoDB (local or MongoDB Atlas)
+npm or yarn
+Installation
+Clone the repo:
 
-### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (Local or MongoDB Atlas)
-- npm or yarn
+bash
+git clone https://github.com/your-username/MERN_Project.git
+cd MERN_Project
 
-### Installation
+Create a .env file inside the backend/ folder:
 
-//To install, add a .env file in backend folder. 
-Content:
-MONGODB_URI=
+env
+MONGODB_URI=your_mongodb_uri
 PORT=5001
-JWT_SECRET=
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 NODE_ENV=development
+
+Install dependencies:
+
+bash
+cd backend && npm install
+cd ../frontend && npm install
+
+Run the app locally:
+
+bash
+# In backend/
+npm run dev
+
+# In frontend/
+npm run dev
+
+🙏 Special Thanks
+Thanks to @codesistency for the detailed walkthrough and inspiration.
+📺 Watch the original YouTube tutorial
+
+Honor and credit go to @codesistency for the chat app demo and implementation guide.
